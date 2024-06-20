@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --primary-red: #8a1515;
+    --primary-gold: #FFD700;
+    --primary-purple: #A020F0;
+    --dark-purple: #301934;
+}
+
+.red {
+    color: var(--primary-red);
+}
+
+@layer base {
+    * {
+        @apply font-[Kanit]
+    }
+
+    h1 {
+        @apply text-4xl font-bold
+    }
+
+    li {
+        @apply p-4
+    }
+
+    button {
+        @apply bg-gradient-to-tr from-[var(--dark-purple)] to-[var(--primary-purple)] rounded-3xl text-[var(--primary-gold)] hover:scale-105 transition-transform duration-300
+    }
+
+}
+
+.placeholder-purple::placeholder {
+    @apply text-[var(--primary-purple)]
+}
