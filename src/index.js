@@ -7,21 +7,25 @@ import RomePage from '../src/routes/Rome/RomePage'
 import ProductsPage from './routes/Products/ProductsPage'
 import ContactPage from '../src/routes/Contact/ContactPage'
 import ScrollToTop from '../src/components/ScrollToTop'
-import Login from '../src/routes/Login/Login'
-import Account from '../src/routes/Login/Account'
+import SignIn from '../src/routes/SignIn/SignIn'
+import Account from '../src/routes/SignIn/Account'
+import { AuthContextProvider } from './context/AuthContext';
+import Protected from './components/Protected';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <ScrollToTop />
-    <Routes>
-      <Route path='/' element={<App />} />
-      <Route path='/Rome' element={<RomePage />} />
-      <Route path='/Products' element={<ProductsPage />} />
-      <Route path='/Contact' element={<ContactPage />} />
-      <Route path='/Login' element={<Login />} />
-      <Route path='/Account' element={<Account />} />
-    </Routes>
-  </BrowserRouter>
+  <AuthContextProvider>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path='/' element={<App />} />
+        <Route path='/Rome' element={<RomePage />} />
+        <Route path='/Products' element={<ProductsPage />} />
+        <Route path='/Contact' element={<ContactPage />} />
+        <Route path='/SignIn' element={<SignIn />} />
+        <Route path='/Account' element={<Protected><Account /></Protected>} />
+      </Routes>
+    </BrowserRouter>
+  </AuthContextProvider>
 );
 

@@ -1,7 +1,20 @@
 import React from 'react'
 import ImageSlider from './ImageSlider'
+import { Link } from 'react-router-dom'
+import { UserAuth } from '../../context/AuthContext'
 
 const RomeCulture = () => {
+
+  const {user, logOut} = UserAuth()
+
+  const handleSignOut = async () => {
+    try {
+      await logOut()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className='mt-[90px] relative bg-[var(--primary-red)] text-[var(--primary-gold)] h-screen flex items-center justify-center'>
       <div className='absolute inset-0 z-0'>
@@ -19,8 +32,10 @@ const RomeCulture = () => {
           the Trajan's Forum and the Pantheon. 
         </p>
         <div className='mt-4'>
-          <button className='m-2 py-3 px-7'>Login</button>
-          <button className='m-2 py-3 px-7'>Sign Up</button>
+          {user?.displayName ?
+            <button onClick={handleSignOut} className='m-2 py-3 px-7'>Log Out</button> :
+            <Link to='/signin'><button className='m-2 py-3 px-7'>Sign In</button></Link>
+          }
         </div>
       </div>
     </div>

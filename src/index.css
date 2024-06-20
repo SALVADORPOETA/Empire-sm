@@ -6,6 +6,7 @@
 
 :root {
     --primary-red: #8a1515;
+    --primary-red-transparent: rgba(138, 21, 21, 0.9); /* Red with 90% transparency */
     --primary-gold: #FFD700;
     --primary-purple: #A020F0;
     --dark-purple: #301934;

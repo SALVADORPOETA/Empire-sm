@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { UserAuth } from '../context/AuthContext'
 
 const Navbar = () => {
   const [nav, setNav] = useState(false)
@@ -41,18 +42,44 @@ const Navbar = () => {
     window.addEventListener('scroll', handleShadow)
   }, [])
 
+  const {user, logOut} = UserAuth()
+
+  const handleSignOut = async () => {
+    try {
+      await logOut()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleClick = () => {
+    handleSignOut()
+    handleNavClick()
+  }
+
+  const location = useLocation()
+  const isActive = (path) => location.pathname === path
+
   return (
-    <div className={shadow ? 'shadow-xl w-full h-[90px] bg-[var(--primary-red)] fixed top-0 left-0 z-50' 
+    <div className={shadow ? 'shadow-xl w-full h-[90px] bg-[var(--primary-red-transparent)] fixed top-0 left-0 z-50' 
         : 'w-full h-[90px] bg-[var(--primary-red)] fixed top-0 left-0 z-50'}>
         <div className='max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full'>
             <h1 className='text-[var(--primary-gold)]'><Link to='/' onClick={handleNavClick}>EMPIRE</Link></h1>
             <div className='hidden md:flex'>
                 <ul className='flex text-[var(--primary-gold)] items-center'>
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/rome'>Rome</Link></li>
-                    <li><Link to='/products'>Products</Link></li>
-                    <li><Link to='/contact'>Contact</Link></li>
-                    <button className='ml-4 py-3 px-7'>Login</button>
+                    {
+                      user?.displayName ?
+                      <li><Link to='/account' className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/account') ? 'border-b-2 border-[var(--primary-gold)]' : ''}`}>Account</Link></li> :
+                      null
+                    }
+                    <li><Link to='/' className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/') ? 'border-b-2 border-[var(--primary-gold)]' : ''}`}>Home</Link></li>
+                    <li><Link to='/rome' className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/rome') ? 'border-b-2 border-[var(--primary-gold)]' : ''}`}>Rome</Link></li>
+                    <li><Link to='/products' className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/products') ? 'border-b-2 border-[var(--primary-gold)]' : ''}`}>Products</Link></li>
+                    <li><Link to='/contact' className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/contact') ? 'border-b-2 border-[var(--primary-gold)]' : ''}`}>Contact</Link></li>
+                    {user?.displayName ? 
+                        <button className='ml-4 py-3 px-7' onClick={handleSignOut}>Log Out</button> 
+                        : <Link to='/signin'><button className='ml-4 py-3 px-7'>Sign In</button></Link>
+                    }
                 </ul>
             </div>
 
@@ -66,11 +93,19 @@ const Navbar = () => {
               : 'absolute left-[-100%]'
             }>
                 <ul>
-                    <li className='text-2xl'><Link to='/' onClick={handleNavClick}>Home</Link></li>
-                    <li className='text-2xl'><Link to='/rome' onClick={handleNavClick}>Rome</Link></li>
-                    <li className='text-2xl'><Link to='/products' onClick={handleNavClick}>Products</Link></li>
-                    <li className='text-2xl'><Link to='/contact' onClick={handleNavClick}>Contact</Link></li>
-                    <button className='m-8 py-3 px-7'>Login</button>
+                    {
+                      user?.displayName ?
+                      <li><Link className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/account') ? 'border-b-2 border-[var(--primary-gold)] inline-block p-1 text-2xl' : 'inline-block p-1 text-2xl'}`} to='/account' onClick={handleNavClick}>Account</Link></li> :
+                      null
+                    }
+                    <li><Link className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/') ? 'border-b-2 border-[var(--primary-gold)] inline-block p-1 text-2xl' : 'inline-block p-1 text-2xl'}`} to='/' onClick={handleNavClick}>Home</Link></li>
+                    <li><Link className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/rome') ? 'border-b-2 border-[var(--primary-gold)] inline-block p-1 text-2xl' : 'inline-block p-1 text-2xl'}`} to='/rome' onClick={handleNavClick}>Rome</Link></li>
+                    <li><Link className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/products') ? 'border-b-2 border-[var(--primary-gold)] inline-block p-1 text-2xl' : 'inline-block p-1 text-2xl'}`} to='/products' onClick={handleNavClick}>Products</Link></li>
+                    <li><Link className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/contact') ? 'border-b-2 border-[var(--primary-gold)] inline-block p-1 text-2xl' : 'inline-block p-1 text-2xl'}`} to='/contact' onClick={handleNavClick}>Contact</Link></li>
+                    {user?.displayName ?
+                      <button onClick={handleClick} className='m-8 py-3 px-7'>Log Out</button>
+                      : <Link to='/signin'><button className='m-8 py-3 px-7'>Sign In</button></Link>
+                    }
                 </ul>
             </div>
         </div>
