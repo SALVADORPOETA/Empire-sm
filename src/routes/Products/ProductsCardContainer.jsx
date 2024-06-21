@@ -55,7 +55,7 @@ return (
         </div>
         {/* Display Products */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
-          {products.map((item, index) => (
+          {products.map((item) => (
             <a key={item.id} href={item.link} target='blank'>
             <div className='border border-[var(--primary-gold)] shadow-lg rounded-lg hover:scale-105 duration-300'>
               <img src={item.image} alt={item.name} 

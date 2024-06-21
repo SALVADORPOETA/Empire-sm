@@ -6,7 +6,7 @@ const AboutCard = (props) => {
       <a href={props.link} target='blank'>
         <div>
           <div className='flex items-center justify-center'>
-            {props.image}
+            <img src={props.image} alt={props.heading} className='w-[120px] rounded-[30px]' />
           </div>
           <h3 className='text-xl font-bold py-4'>{props.heading}</h3>
           <p>
