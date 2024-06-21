@@ -44,6 +44,10 @@ const SignUpEmail = () => {
                         <p>(At least 6 characters)</p>
                         <input onChange={(e) => setPassword(e.target.value)} className='border border-[var(--primary-gold)] bg-[var(--dark-purple)] rounded-3xl shadow-lg p-3 w-full my-4 focus:outline-none text-[var(--primary-gold)] placeholder-purple' type="password" placeholder='Password' />
                     </div>
+                    {
+                        error &&
+                        <p className='text-center py-2 text-xl md:text-2xl'>The Email or the Password is not valid. Please try again.</p> 
+                    }
                     <button className='py-3 px-7 w-full my-4'>Sign Up</button>
                 </form>
                 </div>
