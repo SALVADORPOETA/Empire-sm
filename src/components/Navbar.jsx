@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { UserAuth } from '../context/AuthContext'
 
 const Navbar = () => {
@@ -44,9 +44,13 @@ const Navbar = () => {
 
   const {user, logOut} = UserAuth()
 
+  const navigate = useNavigate()
+
   const handleSignOut = async () => {
     try {
       await logOut()
+      navigate('/')
+      console.log('You are logged out')
     } catch (error) {
       console.log(error)
     }
@@ -68,7 +72,7 @@ const Navbar = () => {
             <div className='hidden md:flex'>
                 <ul className='flex text-[var(--primary-gold)] items-center'>
                     {
-                      user?.displayName ?
+                      user ?
                       <li><Link to='/account' className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/account') ? 'border-b-2 border-[var(--primary-gold)]' : ''}`}>Account</Link></li> :
                       null
                     }
@@ -76,7 +80,7 @@ const Navbar = () => {
                     <li><Link to='/rome' className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/rome') ? 'border-b-2 border-[var(--primary-gold)]' : ''}`}>Rome</Link></li>
                     <li><Link to='/products' className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/products') ? 'border-b-2 border-[var(--primary-gold)]' : ''}`}>Products</Link></li>
                     <li><Link to='/contact' className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/contact') ? 'border-b-2 border-[var(--primary-gold)]' : ''}`}>Contact</Link></li>
-                    {user?.displayName ? 
+                    {user ? 
                         <button className='ml-4 py-3 px-7' onClick={handleSignOut}>Log Out</button> 
                         : <Link to='/signin'><button className='ml-4 py-3 px-7'>Sign In</button></Link>
                     }
@@ -94,7 +98,7 @@ const Navbar = () => {
             }>
                 <ul>
                     {
-                      user?.displayName ?
+                      user ?
                       <li><Link className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/account') ? 'border-b-2 border-[var(--primary-gold)] inline-block p-1 text-2xl' : 'inline-block p-1 text-2xl'}`} to='/account' onClick={handleNavClick}>Account</Link></li> :
                       null
                     }
@@ -102,7 +106,7 @@ const Navbar = () => {
                     <li><Link className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/rome') ? 'border-b-2 border-[var(--primary-gold)] inline-block p-1 text-2xl' : 'inline-block p-1 text-2xl'}`} to='/rome' onClick={handleNavClick}>Rome</Link></li>
                     <li><Link className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/products') ? 'border-b-2 border-[var(--primary-gold)] inline-block p-1 text-2xl' : 'inline-block p-1 text-2xl'}`} to='/products' onClick={handleNavClick}>Products</Link></li>
                     <li><Link className={`hover:border-b-2 hover:border-[var(--primary-gold)] ${isActive('/contact') ? 'border-b-2 border-[var(--primary-gold)] inline-block p-1 text-2xl' : 'inline-block p-1 text-2xl'}`} to='/contact' onClick={handleNavClick}>Contact</Link></li>
-                    {user?.displayName ?
+                    {user ?
                       <button onClick={handleClick} className='m-8 py-3 px-7'>Log Out</button>
                       : <Link to='/signin'><button className='m-8 py-3 px-7'>Sign In</button></Link>
                     }

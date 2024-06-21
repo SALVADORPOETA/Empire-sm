@@ -3,7 +3,8 @@ import GoogleButton from 'react-google-button'
 import {UserAuth} from '../../context/AuthContext'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { MdOutlineMailOutline } from 'react-icons/md'
 
 const SignIn = () => {
 
@@ -26,16 +27,24 @@ const SignIn = () => {
 
   return (
     <div className='bg-[var(--primary-red)]'>
-        <Navbar />
-        <div className='h-screen mt-[90px]'>
-          <h1 className='text-center text-3xl font-bold py-8 text-[var(--primary-gold)]'>
-              Sign In
-          </h1>
-          <div className='max-w-[240px] m-auto py-4'>
-              <GoogleButton onClick={handleGoogleSignIn} />
-          </div>
+      <Navbar />
+      <div className='h-screen mt-[90px]'>
+        <h1 className='text-center text-3xl font-bold py-8 text-[var(--primary-gold)]'>
+          Sign In
+        </h1>
+        <div className='max-w-[240px] m-auto py-4'>
+          <GoogleButton onClick={handleGoogleSignIn} />
         </div>
-        <Footer />
+        <h1 className='text-center text-3xl font-bold py-8 text-[var(--primary-gold)]'>
+          Or
+        </h1>
+        <div className='text-center'>
+          <Link to='/signinemail'>
+            <button className='text-xl py-3 px-7 mx-auto'><MdOutlineMailOutline className='mr-4 inline-block text-2xl' />Sign In with your Email</button>
+          </Link>
+        </div>
+      </div>
+      <Footer />
     </div>
   )
 }

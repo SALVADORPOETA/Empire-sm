@@ -56,8 +56,8 @@ return (
         {/* Display Products */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
           {products.map((item, index) => (
-            <a href={item.link} target='blank'>
-            <div key={index} className='border border-[var(--primary-gold)] shadow-lg rounded-lg hover:scale-105 duration-300'>
+            <a key={item.id} href={item.link} target='blank'>
+            <div className='border border-[var(--primary-gold)] shadow-lg rounded-lg hover:scale-105 duration-300'>
               <img src={item.image} alt={item.name} 
                 className='w-full h-[200px] object-cover rounded-t-lg'
               />

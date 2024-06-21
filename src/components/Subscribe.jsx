@@ -1,6 +1,6 @@
 import React from 'react'
 import { BsFillArrowUpCircleFill } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UserAuth } from '../context/AuthContext'
 
 const Subscribe = () => {
@@ -11,9 +11,13 @@ const Subscribe = () => {
 
   const {user, logOut} = UserAuth()
 
+  const navigate = useNavigate()
+
   const handleSignOut = async () => {
     try {
       await logOut()
+      navigate('/')
+      console.log('You are logged out')
     } catch (error) {
       console.log(error)
     }
@@ -21,12 +25,12 @@ const Subscribe = () => {
 
   return (
     <div className='w-full px-4 py-16 bg-[var(--primary-red)] text-[var(--primary-gold)] text-center'>
-        {user?.displayName ?
+        {user ?
           <h1>Welcome to our Empire's Community!</h1> 
           : <h1>Join our Empire's Community</h1>
         }
         <div className='py-8'>
-          {user?.displayName ?
+          {user ?
             <button onClick={handleSignOut} className='w-[200px] py-3 px-7'>Log Out</button>
             : 
             <> 

@@ -1,15 +1,19 @@
 import React from 'react'
 import ImageSlider from './ImageSlider'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UserAuth } from '../../context/AuthContext'
 
 const RomeCulture = () => {
 
   const {user, logOut} = UserAuth()
 
+  const navigate = useNavigate()
+
   const handleSignOut = async () => {
     try {
       await logOut()
+      navigate('/')
+      console.log('You are logged out')
     } catch (error) {
       console.log(error)
     }
@@ -32,7 +36,7 @@ const RomeCulture = () => {
           the Trajan's Forum and the Pantheon. 
         </p>
         <div className='mt-4'>
-          {user?.displayName ?
+          {user ?
             <button onClick={handleSignOut} className='m-2 py-3 px-7'>Log Out</button> :
             <Link to='/signin'><button className='m-2 py-3 px-7'>Sign In</button></Link>
           }

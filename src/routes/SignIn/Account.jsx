@@ -2,15 +2,19 @@ import React from 'react'
 import { UserAuth } from '../../context/AuthContext'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Account = () => {
 
   const {logOut, user} = UserAuth()
 
+  const navigate = useNavigate()
+
   const handleSignOut = async () => {
     try {
       await logOut()
+      navigate('/')
+      console.log('You are logged out')
     } catch (error) {
       console.log(error)
     }
@@ -23,7 +27,7 @@ const Account = () => {
           <h1 className='text-center text-2xl font-bold pt-12 text-[var(--primary-gold)]'>
             Account
           </h1>
-          {user ?
+          {user?.displayName ?
           <div className='text-center text-[var(--primary-gold)] text-3xl py-4'>
             <p>Welcome, {user.displayName}</p>
             <div className='flex items-center justify-center p-12'>
@@ -31,13 +35,10 @@ const Account = () => {
             </div>
           </div> :
           <div className='text-center text-[var(--primary-gold)] text-3xl py-4'>
-            <p>Please, Login</p>
+            <p>Welcome, {user && user.email}</p>
           </div>
           }
-          {user?.displayName ? 
             <button onClick={handleSignOut} className='py-3 px-7 mt-10 mx-auto block'>Log Out</button>
-            : <Link to='/signin'><button className='py-3 px-7 mt-10 mx-auto block'>Log In</button></Link>        
-          }
         </div>
       <Footer />
     </div>

@@ -11,6 +11,8 @@ import SignIn from '../src/routes/SignIn/SignIn'
 import Account from '../src/routes/SignIn/Account'
 import { AuthContextProvider } from './context/AuthContext';
 import Protected from './components/Protected';
+import SignInEmail from './routes/SignIn/SignInEmail';
+import SignUpEmail from './routes/SignIn/SignUpEmail';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,11 +21,13 @@ root.render(
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<App />} />
-        <Route path='/Rome' element={<RomePage />} />
-        <Route path='/Products' element={<ProductsPage />} />
-        <Route path='/Contact' element={<ContactPage />} />
-        <Route path='/SignIn' element={<SignIn />} />
-        <Route path='/Account' element={<Protected><Account /></Protected>} />
+        <Route path='/rome' element={<RomePage />} />
+        <Route path='/products' element={<ProductsPage />} />
+        <Route path='/contact' element={<ContactPage />} />
+        <Route path='/signIn' element={<SignIn />} />
+        <Route path='/account' element={<Protected><Account /></Protected>} />
+        <Route path='/signinemail' element={<SignInEmail />} />
+        <Route path='/signupemail' element={<SignUpEmail />} />
       </Routes>
     </BrowserRouter>
   </AuthContextProvider>
