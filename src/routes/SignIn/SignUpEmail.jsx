@@ -36,13 +36,12 @@ const SignUpEmail = () => {
                 </div>
                 <form onSubmit={handleSubmit} className='py-4'>
                     <div className='flex flex-col py-2'>
-                        <label className='py-2 font-medium'>Email Address</label>
-                        <input onChange={(e) => setEmail(e.target.value)} className='border border-[var(--primary-gold)] bg-[var(--dark-purple)] rounded-3xl shadow-lg p-3 w-full my-4 focus:outline-none text-[var(--primary-gold)] placeholder-purple' type="email" placeholder='Email' />
+                        <label className='py-2 font-medium'>Add an Email Address</label>
+                        <input onChange={(e) => setEmail(e.target.value)} className='border border-[var(--primary-gold)] bg-[var(--dark-purple)] rounded-3xl shadow-lg p-3 w-full my-4 focus:outline-none text-[var(--primary-gold)] placeholder-purple' type="email" />
                     </div>
                     <div className='flex flex-col py-2'>
-                        <label className='py-2 font-medium'>Password</label>
-                        <p>(At least 6 characters)</p>
-                        <input onChange={(e) => setPassword(e.target.value)} className='border border-[var(--primary-gold)] bg-[var(--dark-purple)] rounded-3xl shadow-lg p-3 w-full my-4 focus:outline-none text-[var(--primary-gold)] placeholder-purple' type="password" placeholder='Password' />
+                        <label className='py-2 font-medium'>Create a Password (at least 6 characters)</label>
+                        <input onChange={(e) => setPassword(e.target.value)} className='border border-[var(--primary-gold)] bg-[var(--dark-purple)] rounded-3xl shadow-lg p-3 w-full my-4 focus:outline-none text-[var(--primary-gold)] placeholder-purple' type="password" />
                     </div>
                     {
                         error &&
