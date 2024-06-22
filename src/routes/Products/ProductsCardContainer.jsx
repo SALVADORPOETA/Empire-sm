@@ -1,14 +1,28 @@
-import React, { useState } from 'react'
-import { data } from '../../data/Data'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+// import { data } from '../../data/Data'
 
 const ProductsCardContainer = () => {
 //  console.log(data)
-  const [products, setProducts] = useState(data)
+  const [products, setProducts] = useState([])
+  const [allProducts, setAllProducts] = useState([])
+
+  useEffect(() => {
+    const apiURL = 'https://empire-api-sm.vercel.app/products'
+    axios.get(apiURL)
+      .then((response) => {
+        setProducts(response.data)
+        setAllProducts(response.data)
+      })
+      .catch((error) => {
+        console.error('Error fetching data from API: ', error)
+      })
+  }, [])
 
 // Filter Type
   const filterType = (category) => {
     setProducts(
-      data.filter((item) => {
+      allProducts.filter((item) => {
         return item.category === category
       })
     )
@@ -17,7 +31,7 @@ const ProductsCardContainer = () => {
 // Filter Price
   const filterPrice = (price) => {
     setProducts(
-      data.filter((item) => {
+      allProducts.filter((item) => {
         return item.price === price
       })
     )
@@ -33,7 +47,7 @@ return (
           <div>
             <p className='font-bold text-[var(--primary-gold)] m-4'>Filter Type</p>
             <div className='flex justify-between max-w-[640px] flex-wrap'>
-              <button onClick={() => setProducts(data)} className='m-1 px-3 py-1'>All</button>
+              <button onClick={() => setProducts(allProducts)} className='m-1 px-3 py-1'>All</button>
               <button onClick={() => filterType('Costumes')} className='m-1 px-3 py-1'>Costumes</button>
               <button onClick={() => filterType('Accessories')} className='m-1 px-3 py-1'>Accessories</button>
               <button onClick={() => filterType('Toys')} className='m-1 px-3 py-1'>Toys</button>
@@ -45,7 +59,7 @@ return (
           <div>
             <p className='font-bold text-[var(--primary-gold)] m-4'>Filter Price</p>
             <div className='flex justify-between max-w-[490px] w-full'>
-              <button onClick={() => setProducts(data)} className='m-1 px-3 py-1'>All</button>
+              <button onClick={() => setProducts(allProducts)} className='m-1 px-3 py-1'>All</button>
               <button onClick={() => filterPrice('$')} className='m-1 px-3 py-1'>$</button>
               <button onClick={() => filterPrice('$$')} className='m-1 px-3 py-1'>$$</button>
               <button onClick={() => filterPrice('$$$')} className='m-1 px-3 py-1'>$$$</button>
