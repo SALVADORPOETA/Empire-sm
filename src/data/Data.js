@@ -1,3 +1,5 @@
+// This is a backup data file just in case the API fails.
+
 export const data = [
     {
         id: 1,
@@ -132,7 +134,7 @@ export const data = [
         link: 'https://www.amazon.com.mx/Holy-Grail-Caesars-Empire-Multicolor/dp/B099NW7BCN/ref=sr_1_1?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1CM2CCNJGEEO6&dib=eyJ2IjoiMSJ9.wpPtyBR-X9A-GCjwvAzq3ezMbSELBcpTSrs9oq74w5I9HLcyb0MFOtJNYoUazK-d0ofJEsKibqEoCziIJHcltCxSzL9RDodswSISFDaGWGA7MWRl97mUUSfxVYMWAnkuI50ibpotMNjQfiLlbxJ8XKqPFSYq43OeufeVNU93KPCkEDd01OZsXfe1WAG2BNvpVNByKR0-xtD8nalMP7GGyaL5Wo5jcbdYkiqobdhjXCWhZSyk9hLhStf7vGVUUUXno3LvpIbP7RG6pGGBlIPdcbFCnrcNudU_VoOu0NGXEa4.gbxAIc_mNjRmLIhGEvnSJLT9eW1SnMu4CCzDs3MzLmw&dib_tag=se&keywords=caesars+empire&qid=1718594763&sprefix=caesars+empire%2Caps%2C120&sr=8-1&ufe=app_do%3Aamzn1.fos.242f5c11-6cfd-40d6-91f6-be3d1974080c',
         name: "Caesar's Empire",
         category: 'Others',
-        image: 'https://m.media-amazon.com/images/I/91UHTwoSVOL._AC_SX569_.jpg',
+        image: 'https://m.media-amazon.com/images/I/61LrM4HeL3L._SY425_.jpg',
         price: '$$$',
     },
     {
