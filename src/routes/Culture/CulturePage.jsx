@@ -8,7 +8,7 @@ import RomeMorality from './RomeMorality'
 import RomeArts from './RomeArts'
 import Subscribe from '../../components/Subscribe'
 
-const RomePage = () => {
+const CulturePage = () => {
   return (
     <>
       <Navbar />
@@ -18,9 +18,9 @@ const RomePage = () => {
       <RomeMorality />
       <RomeArts />
       <Subscribe />
-      <Footer />  
+      <Footer />
     </>
   )
 }
 
-export default RomePage
+export default CulturePage
