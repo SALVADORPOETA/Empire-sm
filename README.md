@@ -4,4 +4,4 @@ This is an original ReactJS project about the Roman Empire. I had this idea beca
 
 This website is completely interactive, so you can click on all the cards and you'll be taken to other pages (Wikipedia and Amazon). All the buttons have a function as well, like the ones in the Products section where you can filter by type and price. You can sign up using your Google account or with an email and password (since this is a personal project I don't require verification, so you can invent any email and password that you want), then you can sign in with your chosen method to access the protected route of your Account page.
 
-![empire](https://github.com/SALVADORPOETA/Empire-sm/assets/71913145/cc4697d7-4a53-4919-bb8e-6979b38030db)
+![empire](https://github.com/SALVADORPOETA/Empire-sm/assets/71913145/e3c1f874-b7f8-4ef8-a9f5-1fb2896ed1b8)
