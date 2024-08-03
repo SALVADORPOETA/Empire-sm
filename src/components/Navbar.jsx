@@ -243,7 +243,9 @@ const Navbar = () => {
               </button>
             ) : (
               <Link to="/signin">
-                <button className="m-8 py-3 px-7">Sign In</button>
+                <button onClick={handleNavClick} className="m-8 py-3 px-7">
+                  Sign In
+                </button>
               </Link>
             )}
           </ul>
