@@ -44,34 +44,46 @@ const ImageSlider = () => {
     const interval = setInterval(() => {
       nextSlide()
     }, 3000)
-
     return () => clearInterval(interval)
   }, [nextSlide])
 
   return (
-    <div className="max-w-full h-[580px] w-full m-auto py-16 px-4 relative group">
+    <div className="max-w-full h-[580px] w-full m-auto py-16 px-4 relative group overflow-hidden">
+      {/* Contenedor de slides */}
       <div
-        className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-      ></div>
-      {/* Left arrow */}
-      <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 group-hover:bg-black/20 text-white cursor-pointer">
+        className="flex w-full h-full transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className="w-full h-full flex-shrink-0 rounded-2xl bg-center bg-cover"
+            style={{ backgroundImage: `url(${slide.url})` }}
+          ></div>
+        ))}
+      </div>
+
+      {/* Flecha izquierda */}
+      <div className="absolute top-[50%] -translate-y-1/2 left-5 text-2xl rounded-full p-2 group-hover:bg-black/20 text-white cursor-pointer">
         <BsChevronCompactLeft onClick={prevSlide} size={30} />
       </div>
-      {/* Right arrow */}
-      <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 group-hover:bg-black/20 text-white cursor-pointer">
+
+      {/* Flecha derecha */}
+      <div className="absolute top-[50%] -translate-y-1/2 right-5 text-2xl rounded-full p-2 group-hover:bg-black/20 text-white cursor-pointer">
         <BsChevronCompactRight onClick={nextSlide} size={30} />
       </div>
+
+      {/* Dots de navegación */}
       <div className="flex top-4 justify-center py-2">
-        {slides.map((slide, slideIndex) => (
+        {slides.map((_, slideIndex) => (
           <div
+            key={slideIndex}
+            onClick={() => goToSlide(slideIndex)}
             className={`text-2xl cursor-pointer ${
               currentIndex === slideIndex
                 ? 'text-[var(--primary-purple)]'
                 : 'text-[var(--primary-gold)]'
             }`}
-            key={slideIndex}
-            onClick={() => goToSlide(slideIndex)}
           >
             <RxDotFilled />
           </div>
