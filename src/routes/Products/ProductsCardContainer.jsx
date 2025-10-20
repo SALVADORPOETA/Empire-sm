@@ -133,25 +133,48 @@ const ProductsCardContainer = () => {
         {/* Display Products */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
           {products.map((item) => (
-            <a key={item.idNum} href={item.link} target="blank">
-              <div className="border border-[var(--primary-gold)] shadow-lg rounded-lg hover:scale-105 duration-300">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-[200px] object-cover rounded-t-lg"
-                />
-                <div className="flex justify-between px-2 py-4">
-                  <p className="font-bold text-[var(--primary-gold)]">
-                    {item.name}
-                  </p>
-                  <p>
-                    <span className="bg-[var(--dark-purple)] border border-[var(--primary-gold)] text-[var(--primary-gold)] p-1 rounded-full">
-                      {item.price}
-                    </span>
-                  </p>
-                </div>
+            <div
+              key={item.idNum}
+              onClick={async () => {
+                try {
+                  // Verifica que el enlace existe y responde
+                  const res = await fetch(item.link, { method: 'HEAD' })
+                  if (res.ok) {
+                    window.open(item.link, '_blank', 'noopener,noreferrer')
+                  } else {
+                    window.open(
+                      'https://www.amazon.com/',
+                      '_blank',
+                      'noopener,noreferrer'
+                    )
+                  }
+                } catch {
+                  // Si hay error de red o el dominio no responde
+                  window.open(
+                    'https://www.amazon.com/',
+                    '_blank',
+                    'noopener,noreferrer'
+                  )
+                }
+              }}
+              className="cursor-pointer border border-[var(--primary-gold)] shadow-lg rounded-lg hover:scale-105 duration-300"
+            >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-[200px] object-cover rounded-t-lg"
+              />
+              <div className="flex justify-between px-2 py-4">
+                <p className="font-bold text-[var(--primary-gold)]">
+                  {item.name}
+                </p>
+                <p>
+                  <span className="bg-[var(--dark-purple)] border border-[var(--primary-gold)] text-[var(--primary-gold)] p-1 rounded-full">
+                    {item.price}
+                  </span>
+                </p>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
