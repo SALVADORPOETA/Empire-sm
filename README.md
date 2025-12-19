@@ -195,7 +195,7 @@ Empire-sm was built as a **serious portfolio project**, intended to demonstrate 
 
 ---
 
-## 👤 Author
+## 👨🏽‍💻 Author
 
 **Salvador Martínez**  
 *Full-Stack Developer*
