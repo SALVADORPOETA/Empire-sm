@@ -97,7 +97,7 @@ git clone https://github.com/SALVADORPOETA/Empire-sm.git
 cd Empire-sm
 
 # Install dependencies
-npm install
+yarn install
 ```
 
 ### Environment Variables
