@@ -84,7 +84,7 @@ The structure is intentionally simple and explicit to keep domain logic clear an
 ### Prerequisites
 
 - Node.js 18+
-- npm or yarn
+- yarn
 - Firebase account (for authentication)
 
 ### Installation
@@ -116,7 +116,7 @@ REACT_APP_FIREBASE_APP_ID=your_app_id
 ### Development Server
 
 ```bash
-npm start
+yarn start
 ```
 
 The application will be available at:
@@ -128,7 +128,7 @@ http://localhost:3000
 ### Build for Production
 
 ```bash
-npm run build
+yarn build
 ```
 
 ---
