@@ -8,7 +8,7 @@ This project demonstrates advanced frontend design, API integration, authenticat
 
 ---
 
-## 📝 Overview
+## ✨ Overview
 
 Empire-sm is not a template, clone, or tutorial follow-along project.
 
