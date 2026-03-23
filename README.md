@@ -22,6 +22,12 @@ It is a **custom-designed educational platform** that combines:
 
 The project emphasizes **clarity of presentation**, **scalability**, and **production-ready patterns**.
 
+<img width="759" height="629" alt="empire-home" src="https://github.com/user-attachments/assets/d98e8ea9-4377-4d66-995a-293b694da6fd" />
+
+<img width="759" height="629" alt="empire-culture" src="https://github.com/user-attachments/assets/8956a51c-ba93-4bdf-b9f9-c83f20e1eb3d" />
+
+<img width="763" height="627" alt="empire-products" src="https://github.com/user-attachments/assets/b8770579-9ae8-4d45-a884-0661c70804de" />
+
 ---
 
 ## 🚀 Features
