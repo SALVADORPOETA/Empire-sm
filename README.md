@@ -22,9 +22,25 @@ It is a **custom-designed educational platform** that combines:
 
 The project emphasizes **clarity of presentation**, **scalability**, and **production-ready patterns**.
 
+---
+
+## 📖 Pages
+
+### Home Page
+
+English: The Home page of Empire serves as an interactive chronological engine covering over 1,500 years of history, from the rise of Augustus to the fall of Constantinople. Utilizing a dynamic Card Container architecture and asynchronous Axios requests, the page renders 25 dynastic blocks integrating historical metadata, representative images, and external reference links. The design prioritizes narrative continuity and data integrity through a strict sorting system, allowing users to visualize the evolution of the Roman state and its transformation into the Byzantine Empire with fluidity and academic rigor.
+
 <img width="759" height="629" alt="empire-home" src="https://github.com/user-attachments/assets/d98e8ea9-4377-4d66-995a-293b694da6fd" />
 
+### Culture Page
+
+The Culture page moves beyond politics to explore the foundations of Roman life, from its complex militaristic ethics to the evolution of Vulgar Latin. Structurally, the module implements a visual alternating layout (zig-zag) and color gradients that thematically separate sections such as religion, arts, and morality. Technically, it stands out for its advanced responsive design and the use of readability layers (glassmorphism) over vibrant backgrounds, offering an immersive learning experience that combines scale micro-interactions with deep, well-vetted content curation.
+
 <img width="759" height="629" alt="empire-culture" src="https://github.com/user-attachments/assets/8956a51c-ba93-4bdf-b9f9-c83f20e1eb3d" />
+
+### Products Page
+
+English: The Products section transforms the study of the imperial economy into a modern and highly functional catalog platform. The main component, the Products Card Container, manages a diverse inventory including literature, military replicas, and educational resources through a multi-dimensional filtering system by category and price. The development excels in its defensive programming, incorporating error handlers for external multimedia resources and an immutable React state logic that ensures instantaneous UI updates, merging historical rigor with the usability of a contemporary e-commerce site.
 
 <img width="763" height="627" alt="empire-products" src="https://github.com/user-attachments/assets/b8770579-9ae8-4d45-a884-0661c70804de" />
 
