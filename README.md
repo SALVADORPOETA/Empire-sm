@@ -1,4 +1,4 @@
-# Empire-sm
+# Empire
 
 Empire-sm is a **fully original ReactJS project** that explores the culture, history, and society of the Roman Empire. The project was **built from scratch** using React, React Router, TailwindCSS, and integrates a **custom API backend** for dynamic content. It also includes user authentication and interactive features for a rich educational experience.
 
